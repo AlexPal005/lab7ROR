@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+<body>
+
+<div class = "container">
+    <h2 class = "text-center text-primary">Меню</h2>
+    <div class="card " style="width: 60rem; margin-left: 17%; margin-bottom: 20px;" >
+      <div class="card-body">
+        <h5 class="card-text">1. Знайти багаж, середня вага одної речі в якому відрізняється не більше, чим на 0.3 кг від<br>
+          загальної середньої ваги одної речі!</h5>
+      </div>
+    </div>
+
+  <ul style = "margin-left: 17%; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+    <%result1 = first() %>
+    <%if result1 == -1 %>
+      <li style = "color:red; ">Нічого не знайдено!</li>
+
+    <% else for i in 0..result1.size-1 do %>
+        <li>id             : <%= result1[i].getId %></li>
+        <li>Кількість речей: <%= result1[i].get_count_things %></li>
+        <li>Загальна вага  : <%= result1[i].get_weight %></li>
+      <%end %>
+    <%end%>
+  </ul>
+
+  <div class="card " style="width: 60rem; margin-left: 17%; margin-bottom: 20px;" >
+    <div class="card-body">
+      <h5 class="card-text">2. Знайти кількість пасажирів, що мають більше двох речей та кількість пасажирів
+      кількість речей яких більше за середнє число речей!</h5>
+    </div>
+  </div>
+
+  <ul style = "margin-left: 17%; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+    <%result1 = second() %>
+      <li>Кількість пасажирів, які мають більше двох речей: <%= result1[0] %></li>
+      <li>Кількість пасажирів, які мають більше за середнє число речей: <%= result1[1] %></li>
+  </ul>
+
+  <div class="card " style="width: 60rem; margin-left: 17%; margin-bottom: 20px;" >
+    <div class="card-body">
+      <h5 class="card-text">3. Визначити, чи є два пасажири, багажі яких співпадають по кількості речей
+      і відрізняються вагою не більше чим на 0.5 кг!</h5>
+    </div>
+  </div>
+  <ul style = "margin-left: 17%; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+    <%result1 = third() %>
+    <%if result1 == false %>
+      <li style = "color:red; ">Нічого не знайдено!</li>
+    <%else %>
+      <li>Є два пасажири, багажі яких співпадають по кількості речей і відрізняються вагою не більше чим на 0.5 кг!</li>
+    <%end%>
+  </ul>
+
+  <div class="card " style="width: 60rem; margin-left: 17%; margin-bottom: 20px;" >
+    <div class="card-body">
+      <h5 class="card-text">4. Визначити чи існує пасажир, багаж якого, має більше всіх речей та вагу!</h5>
+    </div>
+  </div>
+  <ul style = "margin-left: 17%; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+    <%result1 = fourth() %>
+    <%if result1 == false %>
+      <li style = "color:red; ">Нічого не знайдено!</li>
+    <%else %>
+      <li>Існує пасажир, багаж якого, має більше всіх речей та вагу!</li>
+    <%end%>
+  </ul>
+
+  <div class="card " style="width: 60rem; margin-left: 17%; margin-bottom: 20px;" >
+    <div class="card-body">
+      <h5 class="card-text">5. Визначити, чи є пасажир в якого є тільки один багаж, вагою менше 30кг!</h5>
+    </div>
+  </div>
+
+  <ul style = "margin-left: 17%; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+    <%result1 = fifth() %>
+    <%if result1 == false %>
+      <li style = "color:red; ">Нічого не знайдено!</li>
+    <%else %>
+      <li>Існує пасажир в якого є тільки один багаж, вагою менше 30кг!</li>
+    <%end%>
+  </ul>
+  <br><br>
+  <h3 style = "margin-left: 17%;">База даних:</h3>
+  <ul style = "margin-left: 17%; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+    <%if @baggages.size == 0 %>
+      <li style = "color:red; ">Нічого не знайдено!</li>
+    <% else for i in 0..@baggages.size-1 do %>
+        <li>id             : <%= @baggages[i].id %></li>
+        <li>Кількість речей: <%= @baggages[i].numberThings %></li>
+        <li>Загальна вага  : <%= @baggages[i].totalWeight %></li>
+        <br>
+      <%end %>
+    <%end%>
+  </ul>
+
+</div>
+
+</body>
+</html>
+<style></style>
